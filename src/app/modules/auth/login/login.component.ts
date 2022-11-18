@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,17 +10,20 @@ import { FormBuilder } from '@angular/forms';
 export class LoginComponent {
 
   checkoutForm = this.formBuilder.group({
-    user: 'mike',
-    password: ''
+    username: 'john',
+    password: 'changeme'
   });
 
   constructor(
     private formBuilder: FormBuilder,
+    private authService: AuthService
   ){}
 
   onSubmit(): void {
     console.warn('Your order has been submitted', this.checkoutForm.value);
-    // this.checkoutForm.reset();
+    this.authService.login(this.checkoutForm.value).subscribe(data => {
+      console.log(data);
+    });
   }
   
 }
