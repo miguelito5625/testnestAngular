@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    backendServer: "https://testnest.vercel.com"
+    backendServer: "https://testnest.vercel.app"
   };
