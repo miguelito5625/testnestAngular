@@ -7,22 +7,18 @@ import { StorageService } from './modules/storage/storage.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit  {
+export class AppComponent implements OnInit {
   title = 'nestFrontEnd';
   private apiServer = environment.backendServer;
 
-  constructor(
-    private storageService: StorageService
-  ){}
+  constructor() { }
 
   ngOnInit() {
     if (isDevMode()) {
-      console.log('Development!');      
+      console.log('Development!');
     } else {
       console.log('Production!');
     }
     console.log('Api Server:', this.apiServer);
-    // this.storageService.deleUser();
-    // console.log('Storage Service:', this.storageService.getUser().access_token);
   }
 }

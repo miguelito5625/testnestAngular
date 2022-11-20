@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { StorageService } from '../../storage/storage.service';
 import { AuthService } from '../auth.service';
 
@@ -18,7 +19,8 @@ export class LoginComponent {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private router: Router
   ){}
 
   onSubmit(): void {
@@ -26,6 +28,7 @@ export class LoginComponent {
     this.authService.login(this.checkoutForm.value).subscribe(data => {
       console.log(data);
       this.storageService.saveUser(data);
+      this.router.navigate(['/user/profile']);
     });
   }
   
