@@ -17,6 +17,11 @@ const routes: Routes = [
     loadChildren: () => import('./modules/user/user.module')
       .then(m => m.UserModule)
   },
+  {
+    path: 'mqtt',
+    loadChildren: () => import('./modules/mqtt/mqtt.module')
+      .then(m => m.MqttModule)
+  },
   { path: '', redirectTo: 'main', pathMatch: 'full' },
   { path: '**', redirectTo: 'main' },
 ];
